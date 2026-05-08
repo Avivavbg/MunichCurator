@@ -7,13 +7,22 @@
 <meta name="description" content="Munich Curator connects craft lovers with the best workshops, independent makers, and artisan shops in Munich. Discover hands-on experiences in ceramics, textiles, printmaking, and more."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://www.munichcurator.com/"/>
-<!-- Google Analytics GA4 — replace G-XXXXXXXXXX with your Measurement ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- PostHog Analytics (EU Cloud, GDPR opt-in mode) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_qBwBbWQKCfG8SHvdkzqHaez8s4BsccOKL9QqebnOR3q', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+    opt_out_capturing_by_default: true,   // GDPR: wait for explicit consent
+    capture_pageview: false,              // SPA: we fire $pageview manually on route change
+    autocapture: true,                    // auto-track clicks on buttons/links/inputs
+    capture_pageleave: true,
+    disable_session_recording: false,     // session replays on; toggleable later
+    loaded: function(ph) {
+      // If user previously consented, opt them in for this visit
+      if (localStorage.getItem('mc-consent') === 'accepted') ph.opt_in_capturing();
+    }
+  })
 </script>
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
@@ -1366,6 +1375,44 @@ select, select option {
 <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#F6F4EE"/><circle cx="930" cy="320" r="230" fill="#D7E2C9"/><circle cx="260" cy="640" r="160" fill="#EFE2CE"/><text x="120" y="430" font-family="Oswald,Arial Narrow,sans-serif" font-weight="500" font-size="180" fill="#0E0E0C" letter-spacing="-4">MC.</text><text x="120" y="500" font-family="ui-monospace,monospace" font-size="22" fill="#0E0E0C99" letter-spacing="3">MUNICH CURATOR</text></svg>
 </template>
 <div id="root"></div>
+
+<!-- Cookie consent banner (GDPR opt-in for PostHog) -->
+<div id="mc-consent" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#0E0E0C;color:#F6F4EE;padding:18px 20px;border-radius:14px;font-family:'Inter Tight',system-ui,sans-serif;font-size:14px;line-height:1.45;box-shadow:0 8px 32px rgba(0,0,0,0.18);z-index:9999;">
+  <div style="margin-bottom:14px;">
+    We use cookies and analytics to understand how visitors discover Munich Curator.
+    <a href="#" id="mc-consent-privacy" onclick="event.preventDefault();" title="Coming soon" style="color:#D7E2C9;text-decoration:underline;opacity:0.7;">Privacy Policy</a>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;">
+    <button id="mc-consent-decline" style="background:transparent;color:#F6F4EE;border:1px solid #F6F4EE40;padding:8px 16px;border-radius:999px;font-family:inherit;font-size:13px;cursor:pointer;letter-spacing:0.02em;">Decline</button>
+    <button id="mc-consent-accept" style="background:#D7E2C9;color:#0E0E0C;border:none;padding:8px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;letter-spacing:0.02em;">Accept</button>
+  </div>
+</div>
+<script>
+(function() {
+  var KEY = 'mc-consent';
+  var banner = document.getElementById('mc-consent');
+  var stored = localStorage.getItem(KEY);
+  function hide() { banner.style.display = 'none'; }
+  function show() { banner.style.display = 'block'; }
+  if (!stored) { show(); }
+  document.getElementById('mc-consent-accept').addEventListener('click', function() {
+    localStorage.setItem(KEY, 'accepted');
+    if (window.posthog && typeof window.posthog.opt_in_capturing === 'function') {
+      window.posthog.opt_in_capturing();
+      window.posthog.capture('$pageview', { route: (localStorage.getItem('mc-route') || 'home') });
+    }
+    hide();
+  });
+  document.getElementById('mc-consent-decline').addEventListener('click', function() {
+    localStorage.setItem(KEY, 'declined');
+    if (window.posthog && typeof window.posthog.opt_out_capturing === 'function') {
+      window.posthog.opt_out_capturing();
+    }
+    hide();
+  });
+})();
+</script>
+
 <script>window.__images={};</script>
 <script>window.__videos={};</script>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
@@ -1491,6 +1538,7 @@ const Footer = ({ navigate }) =>
         <a href="#/contact" onClick={(e) => {e.preventDefault();navigate("contact");}}>Contact</a>
         <a href="#">Host a workshop</a>
         <a href="#">Teach with us</a>
+        <a href="#" onClick={(e) => e.preventDefault()} title="Coming soon" style={{ opacity: 0.5, cursor: "default" }}>Privacy Policy</a>
       </div>
       <div className="footer-col">
         <h4>Contact</h4>
@@ -1855,7 +1903,13 @@ const Workshops = ({ navigate, params }) => {
         <Reveal>
           {filtered.map((w, i) =>
           <div key={i} className="wk-item-wrap">
-              <div className="wk-item" data-cursor-label="Book" onClick={() => setOpenIdx(openIdx === i ? null : i)}>
+              <div className="wk-item" data-cursor-label="Book" onClick={() => {
+                const opening = openIdx !== i;
+                setOpenIdx(opening ? i : null);
+                if (opening && window.posthog && typeof window.posthog.capture === "function") {
+                  window.posthog.capture("workshop_expanded", { title: w.title, category: w.cat, price: w.price, status: w.status });
+                }
+              }}>
                 <div className="wk-item-thumb">
                   {w.img ?
                 <img src={w.img} alt="" loading="lazy" /> :
@@ -2109,12 +2163,39 @@ const Contact = ({ navigate }) => {
     setFormStatus("sending");
     const data = new FormData(e.target);
     data.append("_subject", "New message from Munich Curator website");
+    // Snapshot form fields for analytics (no PII sent until success)
+    const email = (data.get("email") || "").toString().trim().toLowerCase();
+    const name = (data.get("name") || "").toString().trim();
+    const workshop = (data.get("workshop") || "").toString();
+    const company = (data.get("company") || "").toString();
     try {
       const res = await fetch("https://formsubmit.co/ajax/hallo@munichcurator.com", {
         method: "POST", body: data, headers: { Accept: "application/json" }
       });
       setFormStatus(res.ok ? "sent" : "error");
-    } catch { setFormStatus("error"); }
+      // PostHog: identify user + capture events on success/failure
+      if (window.posthog && typeof window.posthog.capture === "function") {
+        if (res.ok && email) {
+          // Link all past anonymous events from this browser to this person profile
+          window.posthog.identify(email, {
+            email: email,
+            name: name || undefined,
+            role: role,
+            workshop_interest: workshop || undefined,
+            company: company || undefined,
+            first_form_submitted_at: new Date().toISOString()
+          });
+          window.posthog.capture("contact_form_submitted", { role: role, workshop: workshop || null, has_company: !!company });
+        } else if (!res.ok) {
+          window.posthog.capture("contact_form_error", { role: role, status: res.status, error_type: "http_error" });
+        }
+      }
+    } catch (err) {
+      setFormStatus("error");
+      if (window.posthog && typeof window.posthog.capture === "function") {
+        window.posthog.capture("contact_form_error", { role: role, error_type: "network_error" });
+      }
+    }
   };
   return (
     <div className="page">
@@ -2302,11 +2383,15 @@ const App = () => {
     document.documentElement.setAttribute("data-theme", tweaks.theme === "dark" ? "dark" : "light");
   }, [tweaks.theme]);
 
-  // Persist route
+  // Persist route + fire PostHog SPA pageview
   React.useEffect(() => {
     localStorage.setItem("mc-route", route);
     window.location.hash = "#/" + route;
     window.scrollTo({ top: 0, behavior: "instant" });
+    // PostHog: manual $pageview for hash-based SPA routing
+    if (window.posthog && typeof window.posthog.capture === "function") {
+      window.posthog.capture("$pageview", { route: route });
+    }
   }, [route]);
 
   // Hash sync (back/forward)
