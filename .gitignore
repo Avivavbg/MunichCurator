@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+
+# Claude Code
+.claude/
+
+# Editor
+.vscode/
+.idea/
+
+# Vercel
+.vercel/
+
+# Logs
+*.log
+
+# Node (in case we add tooling later)
+node_modules/
+
+# Spreadsheets / drafts (don't ship to web)
+Website_Shops_MC.xlsx
+
+# Loose duplicate images at repo root (the canonical copies live in /images)
+/Botanical-Painting.jpg
+/Crochet-Granny-Squares.jpg
+/Flowers_arranging .jpg
+/Indigo-block-print.jpg
+/Knit-market-bag.jpg
+/Lino-print-night.png
+/Make-your-own-jewelry.jpg
+/Painted-Porcelain-Mug.jpg
+/Pinch-pot-yourplant.jpg
+/Sip-paint.jpeg
+/Stamped-Clay-Ink.jpg
+/bookbinding.jpg
+/ceramic-painting.jpg
+/textile-prints.jpg
