@@ -2182,7 +2182,8 @@ const Contact = ({ navigate }) => {
     const workshop = (data.get("workshop") || "").toString();
     const company = (data.get("company") || "").toString();
     try {
-      const res = await fetch("https://formsubmit.co/ajax/hallo@munichcurator.com", {
+      // TEMP DIAGNOSTIC: routing to Gmail to confirm Zoho-vs-FormSubmit. Revert when done.
+      const res = await fetch("https://formsubmit.co/ajax/aviva1badgili@gmail.com", {
         method: "POST", body: data, headers: { Accept: "application/json" }
       });
       setFormStatus(res.ok ? "sent" : "error");
