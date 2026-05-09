@@ -2175,15 +2175,18 @@ const Contact = ({ navigate }) => {
     e.preventDefault();
     setFormStatus("sending");
     const data = new FormData(e.target);
-    data.append("_subject", "New message from Munich Curator website");
-    // Snapshot form fields for analytics (no PII sent until success)
+    // Extract fields for both the API call and analytics
     const email = (data.get("email") || "").toString().trim().toLowerCase();
     const name = (data.get("name") || "").toString().trim();
     const workshop = (data.get("workshop") || "").toString();
     const company = (data.get("company") || "").toString();
+    const message = (data.get("message") || "").toString().trim();
     try {
-      const res = await fetch("https://formsubmit.co/ajax/hallo@munichcurator.com", {
-        method: "POST", body: data, headers: { Accept: "application/json" }
+      // POST to our own Vercel serverless function — saves to Airtable + sends Telegram alert
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ name, email, role, workshop, company, message })
       });
       setFormStatus(res.ok ? "sent" : "error");
       // PostHog: identify user + capture events on success/failure
