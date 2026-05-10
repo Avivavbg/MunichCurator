@@ -68,7 +68,7 @@ export default async function handler(req, res) {
           'Role': role,
           'Workshop': workshop,
           'Company': company,
-          'Message': message,
+          'Message Content': message,
           'Submitted At': new Date().toISOString(),
           'Status': 'New',
         },
