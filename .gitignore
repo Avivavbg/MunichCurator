@@ -11,6 +11,14 @@
 # Vercel
 .vercel/
 
+# Environment variables (NEVER commit secrets)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.preview
+.env.development
+
 # Logs
 *.log
 
