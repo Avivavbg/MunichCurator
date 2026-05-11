@@ -23,6 +23,20 @@ export default async function handler(req, res) {
   const workshop = (body.workshop || '').toString().trim();
   const company = (body.company || '').toString().trim();
   const message = (body.message || '').toString().trim();
+  const phone = (body.phone || '').toString().trim();
+  const preferredDate = (body.preferredDate || '').toString().trim();
+  const alternativeDate = (body.alternativeDate || '').toString().trim();
+
+  // Compose an enriched message — appends optional extras (phone, dates)
+  // to the visitor's original message so they're captured in Airtable's
+  // existing "Message Content" column without needing new columns.
+  const extras = [];
+  if (phone) extras.push(`Phone: ${phone}`);
+  if (preferredDate) extras.push(`Preferred call/meeting date: ${preferredDate}`);
+  if (alternativeDate) extras.push(`Alternative date: ${alternativeDate}`);
+  const messageWithExtras = extras.length > 0
+    ? `${message}\n\n---\n${extras.join('\n')}`
+    : message;
 
   // Basic validation
   if (!name || !email || !role || !message) {
@@ -68,7 +82,7 @@ export default async function handler(req, res) {
           'Role': role,
           'Workshop': workshop,
           'Company': company,
-          'Message Content': message,
+          'Message Content': messageWithExtras,
           'Submitted At': new Date().toISOString(),
           'Status': 'New',
         },
@@ -102,8 +116,11 @@ export default async function handler(req, res) {
         `📧 ${escapeHtml(email)}`,
         `🎭 Role: <b>${escapeHtml(role)}</b>`,
       ];
+      if (phone) lines.push(`📞 ${escapeHtml(phone)}`);
       if (workshop) lines.push(`🎨 Workshop: ${escapeHtml(workshop)}`);
       if (company) lines.push(`🏪 ${role === 'shop' ? 'Shop' : 'Company/Portfolio'}: ${escapeHtml(company)}`);
+      if (preferredDate) lines.push(`📅 Preferred call date: ${escapeHtml(preferredDate)}`);
+      if (alternativeDate) lines.push(`📅 Alternative date: ${escapeHtml(alternativeDate)}`);
       lines.push('', `💬 ${escapeHtml(message.slice(0, 800))}`);
       if (airtableRecordId) {
         lines.push('', `<a href="https://airtable.com/${BASE}/${airtableRecordId}">📊 View in Airtable</a>`);
