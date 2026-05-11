@@ -1556,7 +1556,7 @@ const Footer = ({ navigate }) =>
       <div className="footer-col">
         <h4>Contact</h4>
         <a href="mailto:Hallo@munichcurator.com">Hallo@munichcurator.com</a>
-        <a href="#">+49 15213184116</a>
+        <a href="tel:+4915213184115">+49 15213184115</a>
         <a href="#">Heßstraße 89, 80797 München, Germany</a>
       </div>
     </div>
@@ -1870,22 +1870,22 @@ window.Photo = Photo;
 /* Workshops (calendar) page */
 
 const workshopList = [
-{ day: "10", month: "MAY", title: "Hand-Built Clay Cups", cat: "Clay", price: "€45", status: "New", img: IMG('clay-hands-collab.png'), desc: "Roll, pinch, and shape your own clay cups by hand in a relaxed studio setting. No experience needed, just curiosity and a willingness to get your hands dirty. A slow, satisfying evening in good company.", duration: "2 hours" },
-{ day: "12", month: "MAY", title: "Crochet a Potted Plant", cat: "Fiber", price: "€39", status: "Few Spots", img: IMG('crochet-planter.png'), desc: "Learn the basics of crochet while crafting a cosy cover for your favourite plant pot. Our instructor keeps things simple and encouraging, even if you have never held a hook before.", duration: "2.5 hours" },
-{ day: "14", month: "MAY", title: "Lino Print Night", cat: "Printmaking", price: "€42", status: "New", img: IMG('Lino-print-night.png'), desc: "Carve your own lino block and pull hand-printed cards and artwork in a lively evening session. A hands-on introduction to relief printing that is equal parts craft and creativity.", duration: "2.5 hours" },
-{ day: "16", month: "MAY", title: "Textile Prints", cat: "Textile", price: "€39", status: "Few Spots", img: IMG('textile-prints.jpg'), desc: "Every session brings a different textile to print on, from an old hoodie in need of a little refresh to a plain market bag that deserves a bit more chic. Using hand-carved wooden blocks and rich fabric inks, you will leave with a one-of-a-kind piece that feels completely new.", duration: "2.5 hours" },
-{ day: "18", month: "MAY", title: "Pinch Pot Your Planter", cat: "Ceramics", price: "€49", status: "New", img: IMG('Pinch-pot-yourplant.jpg'), desc: "Use the ancient pinch pot technique to shape a small planter from a single lump of clay. Meditative, satisfying, and surprisingly addictive, no wheel or prior experience required.", duration: "2 hours" },
-{ day: "20", month: "MAY", title: "Knit a Market Bag", cat: "Fiber", price: "€42", status: "Few Spots", img: IMG('Knit-market-bag.jpg'), desc: "Pick up the basics of knitting while creating a simple, stylish market bag. A warm and social session, perfect for complete beginners. All materials are included.", duration: "3 hours" },
-{ day: "22", month: "MAY", title: "Clay Slab Tray", cat: "Clay", price: "€49", status: "New", img: IMG('clay-slab-tray.png'), desc: "Use the slab-building method to shape and texture a functional tray you will actually want to display. Guided from start to finish with support on forming, trimming, and surface design.", duration: "2.5 hours" },
-{ day: "24", month: "MAY", title: "Ceramic Painting", cat: "Ceramics", price: "€45", status: "Few Spots", img: IMG('ceramic-painting.jpg'), desc: "Decorate a ready-to-glaze porcelain piece with hand-painted botanical motifs and your own designs. A relaxed and creative session with no prior painting experience required.", duration: "2 hours" },
-{ day: "26", month: "MAY", title: "Sip & Paint", cat: "Painting", price: "€45", status: "Few Left", img: IMG('Sip-Paint.jpg'), desc: "Bring a friend, pour a glass, and paint your way through a relaxed evening. A guided session for complete beginners and seasoned doodlers alike — canvases, brushes, and paints are all included. Walk in curious, leave with a piece you'll actually want to hang.", duration: "2 hours" },
-{ day: "28", month: "MAY", title: "Bind an Album with Japanese Binding Technique", cat: "Paper", price: "€42", status: "New", img: IMG('bookbinding.jpg'), desc: "Learn the elegant four-hole stitch, one of the most beautiful bookbinding methods, to create your own handmade album. Perfect for journaling, sketching, or gifting to someone special.", duration: "2.5 hours" },
-{ day: "30", month: "MAY", title: "Crochet Granny Squares", cat: "Fiber", price: "€39", status: "Few Spots", img: IMG('Crochet-Granny-Squares.jpg'), desc: "Master the classic granny square, the building block of so many beautiful crochet projects. Leave with finished squares and the confidence to keep going at home. A friendly session for all levels.", duration: "2.5 hours" },
-{ day: "01", month: "JUN", title: "Botanical Painting", cat: "Painting", price: "€45", status: "New", img: IMG('Botanical-Painting.jpg'), desc: "In this workshop, participants will learn the fundamental techniques of botanical painting — capturing the delicate shapes of leaves, petals, and stems in rich watercolour and ink. A calming and focused session guided by a botanical artist. No prior painting experience needed.", duration: "2 hours" },
-{ day: "03", month: "JUN", title: "Make Your Own Jewelry", cat: "Jewelry", price: "€69", status: "Few Spots", img: IMG('Make-your-own-jewelry.jpg'), desc: "Mix and match a selection of high-grade pearls and colourful beads to design a bracelet or necklace that is entirely your own. Learn basic stringing and knotting techniques as you build your piece, guided by a jewellery maker.", duration: "3 hours" },
-{ day: "05", month: "JUN", title: "Flowers, Binding and Arranging Techniques", cat: "Floral", price: "€45", status: "New", img: IMG('Flowers_arranging .jpg'), desc: "Work with seasonal blooms to create a hand-tied bouquet using professional florist techniques. Learn to select, condition, and arrange flowers in a way that lasts and tells a story.", duration: "2.5 hours" },
-{ day: "07", month: "JUN", title: "Paper Sculpture Lab", cat: "Paper", price: "€39", status: "Few Spots", img: IMG('paper-sculpture.png'), desc: "Explore folding, cutting, and layering techniques to build three-dimensional paper sculptures. A playful, open-ended session for curious hands and creative minds of all skill levels.", duration: "2 hours" },
-{ day: "10", month: "JUN", title: "Stamped Clay & Ink Dish", cat: "Printmaking", price: "€45", status: "New", img: IMG('Stamped-Clay-Ink.jpg'), desc: "Combine printmaking and ceramics: stamp inked patterns onto small clay dishes and tiles in one satisfying session. Guided from clay preparation to final print, no experience needed.", duration: "2.5 hours" }];
+{ day: "26", month: "MAY", title: "Sip & Paint", cat: "Painting", price: "Donation based", status: "Few Left", img: IMG('Sip-Paint.jpg'), desc: "Sip&Paint guided workshop in which we will paint Henri Matisse's \"Dance\" (La Danse). We will have a cozy guided painting session open to all levels.", duration: "2 hours" },
+{ day: "27", month: "MAY", title: "Hand-Built Clay Cups", cat: "Clay", price: "€45", status: "New", img: IMG('clay-hands-collab.png'), desc: "Roll, pinch, and shape your own clay cups by hand in a relaxed studio setting. No experience needed, just curiosity and a willingness to get your hands dirty. A slow, satisfying evening in good company.", duration: "2 hours" },
+{ day: "29", month: "MAY", title: "Crochet a Potted Plant", cat: "Fiber", price: "€39", status: "Few Spots", img: IMG('crochet-planter.png'), desc: "Learn the basics of crochet while crafting a cosy cover for your favourite plant pot. Our instructor keeps things simple and encouraging, even if you have never held a hook before.", duration: "2.5 hours" },
+{ day: "31", month: "MAY", title: "Lino Print Night", cat: "Printmaking", price: "€42", status: "New", img: IMG('Lino-print-night.png'), desc: "Carve your own lino block and pull hand-printed cards and artwork in a lively evening session. A hands-on introduction to relief printing that is equal parts craft and creativity.", duration: "2.5 hours" },
+{ day: "02", month: "JUN", title: "Textile Prints", cat: "Textile", price: "€39", status: "Few Spots", img: IMG('textile-prints.jpg'), desc: "Every session brings a different textile to print on, from an old hoodie in need of a little refresh to a plain market bag that deserves a bit more chic. Using hand-carved wooden blocks and rich fabric inks, you will leave with a one-of-a-kind piece that feels completely new.", duration: "2.5 hours" },
+{ day: "04", month: "JUN", title: "Pinch Pot Your Planter", cat: "Ceramics", price: "€49", status: "New", img: IMG('Pinch-pot-yourplant.jpg'), desc: "Use the ancient pinch pot technique to shape a small planter from a single lump of clay. Meditative, satisfying, and surprisingly addictive, no wheel or prior experience required.", duration: "2 hours" },
+{ day: "06", month: "JUN", title: "Knit a Market Bag", cat: "Fiber", price: "€42", status: "Few Spots", img: IMG('Knit-market-bag.jpg'), desc: "Pick up the basics of knitting while creating a simple, stylish market bag. A warm and social session, perfect for complete beginners. All materials are included.", duration: "3 hours" },
+{ day: "08", month: "JUN", title: "Clay Slab Tray", cat: "Clay", price: "€49", status: "New", img: IMG('clay-slab-tray.png'), desc: "Use the slab-building method to shape and texture a functional tray you will actually want to display. Guided from start to finish with support on forming, trimming, and surface design.", duration: "2.5 hours" },
+{ day: "10", month: "JUN", title: "Ceramic Painting", cat: "Ceramics", price: "€45", status: "Few Spots", img: IMG('ceramic-painting.jpg'), desc: "Decorate a ready-to-glaze porcelain piece with hand-painted botanical motifs and your own designs. A relaxed and creative session with no prior painting experience required.", duration: "2 hours" },
+{ day: "12", month: "JUN", title: "Bind an Album with Japanese Binding Technique", cat: "Paper", price: "€42", status: "New", img: IMG('bookbinding.jpg'), desc: "Learn the elegant four-hole stitch, one of the most beautiful bookbinding methods, to create your own handmade album. Perfect for journaling, sketching, or gifting to someone special.", duration: "2.5 hours" },
+{ day: "14", month: "JUN", title: "Crochet Granny Squares", cat: "Fiber", price: "€39", status: "Few Spots", img: IMG('Crochet-Granny-Squares.jpg'), desc: "Master the classic granny square, the building block of so many beautiful crochet projects. Leave with finished squares and the confidence to keep going at home. A friendly session for all levels.", duration: "2.5 hours" },
+{ day: "16", month: "JUN", title: "Botanical Painting", cat: "Painting", price: "€45", status: "New", img: IMG('Botanical-Painting.jpg'), desc: "In this workshop, participants will learn the fundamental techniques of botanical painting — capturing the delicate shapes of leaves, petals, and stems in rich watercolour and ink. A calming and focused session guided by a botanical artist. No prior painting experience needed.", duration: "2 hours" },
+{ day: "18", month: "JUN", title: "Make Your Own Jewelry", cat: "Jewelry", price: "€69", status: "Few Spots", img: IMG('Make-your-own-jewelry.jpg'), desc: "Mix and match a selection of high-grade pearls and colourful beads to design a bracelet or necklace that is entirely your own. Learn basic stringing and knotting techniques as you build your piece, guided by a jewellery maker.", duration: "3 hours" },
+{ day: "20", month: "JUN", title: "Flowers, Binding and Arranging Techniques", cat: "Floral", price: "€45", status: "New", img: IMG('Flowers_arranging .jpg'), desc: "Work with seasonal blooms to create a hand-tied bouquet using professional florist techniques. Learn to select, condition, and arrange flowers in a way that lasts and tells a story.", duration: "2.5 hours" },
+{ day: "22", month: "JUN", title: "Paper Sculpture Lab", cat: "Paper", price: "€39", status: "Few Spots", img: IMG('paper-sculpture.png'), desc: "Explore folding, cutting, and layering techniques to build three-dimensional paper sculptures. A playful, open-ended session for curious hands and creative minds of all skill levels.", duration: "2 hours" },
+{ day: "24", month: "JUN", title: "Stamped Clay & Ink Dish", cat: "Printmaking", price: "€45", status: "New", img: IMG('Stamped-Clay-Ink.jpg'), desc: "Combine printmaking and ceramics: stamp inked patterns onto small clay dishes and tiles in one satisfying session. Guided from clay preparation to final print, no experience needed.", duration: "2.5 hours" }];
 
 
 const cats = ["All", "Clay", "Ceramics", "Fiber", "Printmaking", "Textile", "Paper", "Jewelry", "Floral", "Painting"];
@@ -2181,12 +2181,15 @@ const Contact = ({ navigate }) => {
     const workshop = (data.get("workshop") || "").toString();
     const company = (data.get("company") || "").toString();
     const message = (data.get("message") || "").toString().trim();
+    const phone = (data.get("phone") || "").toString().trim();
+    const preferredDate = (data.get("preferredDate") || "").toString().trim();
+    const alternativeDate = (data.get("alternativeDate") || "").toString().trim();
     try {
       // POST to our own Vercel serverless function — saves to Airtable + sends Telegram alert
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({ name, email, role, workshop, company, message })
+        body: JSON.stringify({ name, email, role, workshop, company, message, phone, preferredDate, alternativeDate })
       });
       setFormStatus(res.ok ? "sent" : "error");
       // PostHog: identify user + capture events on success/failure
@@ -2256,6 +2259,10 @@ const Contact = ({ navigate }) => {
                       <input type={f.t} name={f.n} required style={{ background: "transparent", border: "none", borderBottom: "1px solid var(--line)", padding: "10px 0", fontFamily: "var(--font-body)", fontSize: 18, color: "var(--ink)", outline: "none" }} />
                     </label>
                   )}
+                  <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <span className="label" style={{ color: "var(--ink-50)" }}>— Phone (optional)</span>
+                    <input type="tel" name="phone" placeholder="+49 ..." style={{ background: "transparent", border: "none", borderBottom: "1px solid var(--line)", padding: "10px 0", fontFamily: "var(--font-body)", fontSize: 18, color: "var(--ink)", outline: "none" }} />
+                  </label>
                   {role === "participant" ? (
                     <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                       <span className="label" style={{ color: "var(--ink-50)" }}>— Select Workshop</span>
@@ -2268,10 +2275,24 @@ const Contact = ({ navigate }) => {
                       </div>
                     </label>
                   ) : (
-                    <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                      <span className="label" style={{ color: "var(--ink-50)" }}>— {role === "maker" ? "Instagram / Portfolio link" : "Shop name"}</span>
-                      <input type="text" name="company" required style={{ background: "transparent", border: "none", borderBottom: "1px solid var(--line)", padding: "10px 0", fontFamily: "var(--font-body)", fontSize: 18, color: "var(--ink)", outline: "none" }} />
-                    </label>
+                    <>
+                      <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                        <span className="label" style={{ color: "var(--ink-50)" }}>— {role === "maker" ? "Instagram / Portfolio link" : "Shop name"}</span>
+                        <input type="text" name="company" required style={{ background: "transparent", border: "none", borderBottom: "1px solid var(--line)", padding: "10px 0", fontFamily: "var(--font-body)", fontSize: 18, color: "var(--ink)", outline: "none" }} />
+                      </label>
+                      {role === "shop" && (
+                        <>
+                          <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                            <span className="label" style={{ color: "var(--ink-50)" }}>— Preferred date for a call/meeting (optional)</span>
+                            <input type="date" name="preferredDate" style={{ background: "transparent", border: "none", borderBottom: "1px solid var(--line)", padding: "10px 0", fontFamily: "var(--font-body)", fontSize: 18, color: "var(--ink)", outline: "none" }} />
+                          </label>
+                          <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                            <span className="label" style={{ color: "var(--ink-50)" }}>— Alternative date (optional)</span>
+                            <input type="date" name="alternativeDate" style={{ background: "transparent", border: "none", borderBottom: "1px solid var(--line)", padding: "10px 0", fontFamily: "var(--font-body)", fontSize: 18, color: "var(--ink)", outline: "none" }} />
+                          </label>
+                        </>
+                      )}
+                    </>
                   )}
                   <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                     <span className="label" style={{ color: "var(--ink-50)" }}>— Message</span>
