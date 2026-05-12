@@ -1622,6 +1622,7 @@ const Footer = ({ navigate }) =>
         <a href="#">Host a workshop</a>
         <a href="#">Teach with us</a>
         <a href="#/privacy" onClick={(e) => {e.preventDefault();navigate("privacy");}}>Privacy Policy</a>
+        <a href="#/impressum" onClick={(e) => {e.preventDefault();navigate("impressum");}}>Impressum</a>
       </div>
       <div className="footer-col">
         <h4>Contact</h4>
@@ -2553,7 +2554,75 @@ const Privacy = ({ navigate }) => {
 
 };
 
-Object.assign(window, { Shops, Contact, Privacy });
+const Impressum = ({ navigate }) => {
+  const Block = ({ title, children }) =>
+    <Reveal>
+      <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: "clamp(20px, 1.8vw, 26px)", letterSpacing: "0.01em", margin: "40px 0 12px", textTransform: "uppercase" }}>{title}</h2>
+      <div style={{ fontFamily: "var(--font-body)", fontSize: "clamp(15px, 1.1vw, 17px)", lineHeight: 1.7, color: "var(--ink)", maxWidth: "60ch" }}>{children}</div>
+    </Reveal>;
+  return (
+    <div className="page">
+      <section className="wk-hero" style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: "clamp(70px, 8vw, 110px)", paddingBottom: "clamp(40px, 6vw, 80px)" }}>
+        <h1 className="hero-title-line" style={{ textAlign: "center", animation: "none", marginBottom: 16, position: "relative", zIndex: 2, fontSize: "clamp(28px, 3.5vw, 54px)" }}>
+          Impressum
+        </h1>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(15px, 1.4vw, 19px)", lineHeight: 1.5, color: "var(--ink-50)", textAlign: "center", maxWidth: "62ch", margin: "0 auto", position: "relative", zIndex: 2 }}>Angaben gemäß § 5 TMG · Legal notice under § 5 TMG</p>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <Block title="Anbieter / Provider">
+          <p><strong>Munich Curator GbR</strong></p>
+          <p>Heßstraße 89<br />80797 München<br />Germany</p>
+        </Block>
+
+        <Block title="Vertretungsberechtigte Gesellschafter / Authorised Partners">
+          <p>Aviva Badgili</p>
+          <p>Ale Manzi</p>
+        </Block>
+
+        <Block title="Kontakt / Contact">
+          <p>E-Mail: <a href="mailto:hallo@munichcurator.com" style={{ color: "var(--ink)" }}>hallo@munichcurator.com</a></p>
+          <p>Telefon: <a href="tel:+4915213184115" style={{ color: "var(--ink)" }}>+49 15213184115</a></p>
+        </Block>
+
+        <Block title="Umsatzsteuer-ID / VAT ID">
+          <p>Not VAT-registered at this time. A VAT ID will be added here once issued.</p>
+        </Block>
+
+        <Block title="Inhaltlich verantwortlich gem. § 18 Abs. 2 MStV">
+          <p>Aviva Badgili<br />Heßstraße 89, 80797 München, Germany</p>
+        </Block>
+
+        <Block title="EU-Streitschlichtung / EU Dispute Resolution">
+          <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)" }}>https://ec.europa.eu/consumers/odr/</a></p>
+          <p style={{ marginTop: 8 }}>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+          <p style={{ marginTop: 12, fontStyle: "italic", color: "var(--ink-50)" }}>The European Commission provides a platform for online dispute resolution (ODR): the link above. Our email address is listed above.</p>
+        </Block>
+
+        <Block title="Verbraucherstreitbeilegung / Consumer Dispute Resolution">
+          <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+          <p style={{ marginTop: 12, fontStyle: "italic", color: "var(--ink-50)" }}>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+        </Block>
+
+        <Block title="Haftungsausschluss / Disclaimer">
+          <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Für die Inhalte verlinkter externer Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+          <p style={{ marginTop: 12, fontStyle: "italic", color: "var(--ink-50)" }}>The contents of our pages have been created with the greatest care. However, we cannot guarantee the accuracy, completeness, or timeliness of the content. The operators of linked external pages are solely responsible for their content.</p>
+        </Block>
+
+        <Reveal>
+          <div style={{ marginTop: 60, paddingTop: 24, borderTop: "1px solid var(--line)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--ink-50)", letterSpacing: "0.04em", textTransform: "uppercase", margin: 0 }}>Last updated: 12 May 2026</p>
+            <button className="nav-cta" onClick={() => navigate("home")}><Dot accent /> Back to home</button>
+          </div>
+        </Reveal>
+      </section>
+
+      <Footer navigate={navigate} />
+    </div>);
+
+};
+
+Object.assign(window, { Shops, Contact, Privacy, Impressum });
 
 /* App shell — router, nav, cursor, theme, tweaks */
 
@@ -2563,7 +2632,8 @@ const ROUTES = [
 { key: "shops", label: "Shops", component: "Shops" },
 { key: "studio", label: "About", component: "Studio" },
 { key: "contact", label: "Contact", component: "Contact" },
-{ key: "privacy", label: "Privacy", component: "Privacy" }];
+{ key: "privacy", label: "Privacy", component: "Privacy" },
+{ key: "impressum", label: "Impressum", component: "Impressum" }];
 
 
 const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
@@ -2709,7 +2779,7 @@ const App = () => {
 </span>
         </a>
         <div className="nav-links">
-          {ROUTES.filter((r) => r.key !== "home" && r.key !== "contact" && r.key !== "privacy").map((r) => <a
+          {ROUTES.filter((r) => r.key !== "home" && r.key !== "contact" && r.key !== "privacy" && r.key !== "impressum").map((r) => <a
             key={r.key}
             href={"#/" + r.key}
             className={"nav-link" + (route === r.key ? " is-active" : "")}
