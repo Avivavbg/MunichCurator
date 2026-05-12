@@ -1387,6 +1387,76 @@ select, select option {
 </template>
 <div id="root"></div>
 
+<!-- Google Translate widget (EN ↔ DE language switcher) -->
+<div id="mc-lang-switcher" aria-label="Language" style="position:fixed;top:14px;right:64px;z-index:9998;background:rgba(246,244,238,0.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(14,14,12,0.12);border-radius:999px;padding:4px 10px;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#0E0E0C;display:flex;align-items:center;gap:6px;">
+  <span style="opacity:0.55;">Lang</span>
+  <div id="google_translate_element"></div>
+</div>
+<style>
+  /* Hide Google's top banner & restore body offset */
+  .goog-te-banner-frame.skiptranslate { display: none !important; }
+  body { top: 0 !important; position: static !important; }
+
+  /* Slim, on-brand select inside our pill */
+  #mc-lang-switcher .goog-te-gadget {
+    font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+    font-size: 11px !important;
+    color: #0E0E0C !important;
+    margin: 0 !important;
+  }
+  #mc-lang-switcher .goog-te-gadget > span { display: none !important; } /* hide "Powered by" inline */
+  #mc-lang-switcher .goog-te-gadget-simple {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 11px !important;
+  }
+  #mc-lang-switcher .goog-te-gadget-simple .goog-te-menu-value {
+    color: #0E0E0C !important;
+    font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+    font-size: 11px !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+  }
+  #mc-lang-switcher .goog-te-gadget-simple .goog-te-menu-value span { color: #0E0E0C !important; }
+  #mc-lang-switcher .goog-te-gadget-simple img { display: none !important; } /* Google logo */
+  #mc-lang-switcher .goog-te-gadget-icon { display: none !important; }
+  /* Pull a clean caret in via pseudo-element */
+  #mc-lang-switcher .goog-te-gadget-simple::after {
+    content: " ▾";
+    color: #0E0E0C99;
+    margin-left: 2px;
+  }
+
+  /* Suppress Google's overlay tooltip box that drifts on hover */
+  .goog-tooltip, .goog-tooltip:hover { display: none !important; }
+  .goog-text-highlight {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  @media (max-width: 520px) {
+    #mc-lang-switcher {
+      right: 56px;
+      top: 12px;
+      padding: 3px 8px;
+    }
+    #mc-lang-switcher span:first-child { display: none; } /* hide "Lang" label on mobile */
+  }
+</style>
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,de',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+
 <!-- Cookie consent banner (GDPR opt-in for PostHog) -->
 <div id="mc-consent" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#0E0E0C;color:#F6F4EE;padding:18px 20px;border-radius:14px;font-family:'Inter Tight',system-ui,sans-serif;font-size:14px;line-height:1.45;box-shadow:0 8px 32px rgba(0,0,0,0.18);z-index:9999;">
   <div style="margin-bottom:14px;">
@@ -2367,6 +2437,9 @@ const Privacy = ({ navigate }) => {
           <Sub title="Displaying content from external platforms — Google Fonts, OpenStreetMap / CARTO (Leaflet map tiles)">
             <p>IP address, usage data.</p>
           </Sub>
+          <Sub title="Translation service — Google Translate widget">
+            <p>IP address, usage data, page content (translated only after the User actively selects a non-default language from the on-page language switcher). The widget is provided by Google LLC; translation is opt-in by user action.</p>
+          </Sub>
           <Sub title="Hosting and backend infrastructure — Vercel Inc.">
             <p>IP address, usage data, system logs, data submitted via the contact form.</p>
           </Sub>
@@ -2407,7 +2480,7 @@ const Privacy = ({ navigate }) => {
               <li><strong>PostHog EU Cloud</strong> — Germany (Frankfurt) — data remains in the EU.</li>
               <li><strong>Vercel Inc.</strong> — United States — covered under the EU–U.S. Data Privacy Framework. Acts as Data Processor under a DPA.</li>
               <li><strong>Airtable, Inc.</strong> — United States — covered under the EU–U.S. Data Privacy Framework. Acts as Data Processor under a DPA.</li>
-              <li><strong>Google (Fonts)</strong> — United States — covered under the EU–U.S. Data Privacy Framework.</li>
+              <li><strong>Google (Fonts and Translate)</strong> — United States — covered under the EU–U.S. Data Privacy Framework. Google Translate sends translated page content to Google servers only when the User actively selects a non-default language.</li>
               <li><strong>OpenStreetMap Foundation / CARTO</strong> — UK / EU — for map tiles only.</li>
               <li><strong>Telegram FZ-LLC</strong> — United Arab Emirates — used only for one-way notifications to the Owner.</li>
             </ul>
