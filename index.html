@@ -1391,7 +1391,7 @@ select, select option {
 <div id="mc-consent" style="display:none;position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#0E0E0C;color:#F6F4EE;padding:18px 20px;border-radius:14px;font-family:'Inter Tight',system-ui,sans-serif;font-size:14px;line-height:1.45;box-shadow:0 8px 32px rgba(0,0,0,0.18);z-index:9999;">
   <div style="margin-bottom:14px;">
     We use cookies and analytics to understand how visitors discover Munich Curator.
-    <a href="#" id="mc-consent-privacy" onclick="event.preventDefault();" title="Coming soon" style="color:#D7E2C9;text-decoration:underline;opacity:0.7;">Privacy Policy</a>
+    <a href="#/privacy" id="mc-consent-privacy" style="color:#D7E2C9;text-decoration:underline;">Privacy Policy</a>
   </div>
   <div style="display:flex;gap:10px;justify-content:flex-end;">
     <button id="mc-consent-decline" style="background:transparent;color:#F6F4EE;border:1px solid #F6F4EE40;padding:8px 16px;border-radius:999px;font-family:inherit;font-size:13px;cursor:pointer;letter-spacing:0.02em;">Decline</button>
@@ -1551,7 +1551,7 @@ const Footer = ({ navigate }) =>
         <a href="#/contact" onClick={(e) => {e.preventDefault();navigate("contact");}}>Contact</a>
         <a href="#">Host a workshop</a>
         <a href="#">Teach with us</a>
-        <a href="#" onClick={(e) => e.preventDefault()} title="Coming soon" style={{ opacity: 0.5, cursor: "default" }}>Privacy Policy</a>
+        <a href="#/privacy" onClick={(e) => {e.preventDefault();navigate("privacy");}}>Privacy Policy</a>
       </div>
       <div className="footer-col">
         <h4>Contact</h4>
@@ -2331,7 +2331,156 @@ const Contact = ({ navigate }) => {
 
 };
 
-Object.assign(window, { Shops, Contact });
+const Privacy = ({ navigate }) => {
+  const Section = ({ title, children }) =>
+    <Reveal>
+      <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 500, fontSize: "clamp(22px, 2.2vw, 30px)", letterSpacing: "0.01em", margin: "48px 0 16px", textTransform: "uppercase" }}>{title}</h2>
+      <div style={{ fontFamily: "var(--font-body)", fontSize: "clamp(15px, 1.1vw, 17px)", lineHeight: 1.65, color: "var(--ink)", maxWidth: "70ch" }}>{children}</div>
+    </Reveal>;
+  const Sub = ({ title, children }) =>
+    <div style={{ marginTop: 24 }}>
+      <h3 style={{ fontFamily: "var(--font-body)", fontWeight: 600, fontSize: "clamp(16px, 1.2vw, 18px)", margin: "0 0 8px", color: "var(--ink)" }}>{title}</h3>
+      <div>{children}</div>
+    </div>;
+  return (
+    <div className="page">
+      <section className="wk-hero" style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: "clamp(70px, 8vw, 110px)", paddingBottom: "clamp(40px, 6vw, 80px)" }}>
+        <h1 className="hero-title-line" style={{ textAlign: "center", animation: "none", marginBottom: 16, position: "relative", zIndex: 2, fontSize: "clamp(28px, 3.5vw, 54px)" }}>
+          Privacy Policy
+        </h1>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(15px, 1.4vw, 19px)", lineHeight: 1.5, color: "var(--ink-50)", textAlign: "center", maxWidth: "62ch", margin: "0 auto", position: "relative", zIndex: 2 }}>How Munich Curator collects, uses, and protects your personal data. Last updated: 12 May 2026.</p>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <Reveal>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(15px, 1.1vw, 17px)", lineHeight: 1.65, color: "var(--ink)", maxWidth: "70ch" }}>This Website (munichcurator.com) collects some Personal Data from its Users. This document can be printed for reference by using the print command in the settings of any browser.</p>
+        </Reveal>
+
+        <Section title="Policy Summary">
+          <p>Personal Data is processed for the following purposes and using the following services:</p>
+          <Sub title="Analytics — PostHog (EU Cloud)">
+            <p>Trackers, usage data, page views, pseudonymous device identifier, approximate location derived from IP address, email address (only if voluntarily provided via the contact form).</p>
+          </Sub>
+          <Sub title="Session recording & heatmaps — PostHog session replay">
+            <p>Page views, clicks, scrolling behavior, pseudonymous session ID, approximate geographic location.</p>
+          </Sub>
+          <Sub title="Displaying content from external platforms — Google Fonts, OpenStreetMap / CARTO (Leaflet map tiles)">
+            <p>IP address, usage data.</p>
+          </Sub>
+          <Sub title="Hosting and backend infrastructure — Vercel Inc.">
+            <p>IP address, usage data, system logs, data submitted via the contact form.</p>
+          </Sub>
+          <Sub title="User database management — Airtable, Inc.">
+            <p>Name, email address, phone number (optional), message content, role (participant / maker / shop owner), preferred meeting dates (shop owners only), submission timestamp.</p>
+          </Sub>
+          <Sub title="Operator notifications — Telegram">
+            <p>Name, email, phone (optional), message, role, dates, timestamp. Used solely to notify the Owner of new submissions.</p>
+          </Sub>
+        </Section>
+
+        <Section title="Owner and Data Controller">
+          <p><strong>Munich Curator GbR</strong></p>
+          <p>Heßstraße 89, 80797 München, Germany</p>
+          <p>Email: <a href="mailto:hallo@munichcurator.com" style={{ color: "var(--ink)" }}>hallo@munichcurator.com</a></p>
+          <p>Phone: <a href="tel:+4915213184115" style={{ color: "var(--ink)" }}>+49 15213184115</a></p>
+        </Section>
+
+        <Section title="Types of Data collected">
+          <p>Among the types of Personal Data this Website collects, by itself or through third parties, there are:</p>
+          <Sub title="Voluntarily provided via the contact form">
+            <p>Name, email address, role (participant / maker / shop owner), workshop interest, company / shop name / portfolio link, message content, phone number (optional), preferred and alternative meeting dates (optional, shop owners only).</p>
+          </Sub>
+          <Sub title="Automatically collected">
+            <p>Trackers (after consent only), usage data, IP address, browser information, operating system, approximate location (city / country derived from IP), page views, clicks, session recordings (after consent only).</p>
+          </Sub>
+          <p style={{ marginTop: 16 }}>Personal Data may be freely provided by the User, or, in the case of Usage Data, collected automatically when using this Website. Unless specified otherwise, all Data requested by this Website is mandatory and failure to provide this Data may make it impossible for this Website to provide its services. In cases where this Website specifically states that some Data is not mandatory (e.g. phone number, meeting dates), Users are free not to communicate this Data without consequences to the availability or functioning of the Service.</p>
+          <p style={{ marginTop: 12 }}>Users are responsible for any third-party Personal Data obtained, published, or shared through this Website.</p>
+        </Section>
+
+        <Section title="Mode and Place of Processing">
+          <Sub title="Methods of processing">
+            <p>The Owner takes appropriate security measures to prevent unauthorized access, disclosure, modification, or unauthorized destruction of the Data. Data processing is carried out using computers and IT enabled tools, following organizational procedures and modes strictly related to the purposes indicated.</p>
+          </Sub>
+          <Sub title="Place">
+            <p>The Data is processed at the Owner's operating offices in Munich, Germany, and in any other places where the parties involved in the processing are located.</p>
+            <ul style={{ marginTop: 12, paddingLeft: 20 }}>
+              <li><strong>PostHog EU Cloud</strong> — Germany (Frankfurt) — data remains in the EU.</li>
+              <li><strong>Vercel Inc.</strong> — United States — covered under the EU–U.S. Data Privacy Framework. Acts as Data Processor under a DPA.</li>
+              <li><strong>Airtable, Inc.</strong> — United States — covered under the EU–U.S. Data Privacy Framework. Acts as Data Processor under a DPA.</li>
+              <li><strong>Google (Fonts)</strong> — United States — covered under the EU–U.S. Data Privacy Framework.</li>
+              <li><strong>OpenStreetMap Foundation / CARTO</strong> — UK / EU — for map tiles only.</li>
+              <li><strong>Telegram FZ-LLC</strong> — United Arab Emirates — used only for one-way notifications to the Owner.</li>
+            </ul>
+          </Sub>
+          <Sub title="Retention time">
+            <p>Unless specified otherwise, Personal Data shall be processed and stored for as long as required by the purpose they have been collected for, and may be retained for longer due to applicable legal obligation or based on the User's consent.</p>
+            <ul style={{ marginTop: 12, paddingLeft: 20 }}>
+              <li>Contact form submissions (Airtable): up to 24 months after the last contact, then deleted.</li>
+              <li>Analytics data (PostHog): up to 12 months, then aggregated or deleted.</li>
+              <li>Session recordings (PostHog): up to 30 days, then automatically deleted.</li>
+              <li>Server logs (Vercel): up to 30 days for security and operational purposes.</li>
+            </ul>
+          </Sub>
+        </Section>
+
+        <Section title="Cookies and tracking">
+          <p>This Website uses cookies and similar tracking technologies. Analytics and session-replay trackers fire <strong>only after</strong> the User has explicitly accepted them through the cookie consent banner. Strictly necessary cookies (e.g. consent state, route persistence) are stored without prior consent on the basis of legitimate interest, as they are required to make the Website usable.</p>
+          <p style={{ marginTop: 12 }}>Users can revoke their consent at any time by clearing their browser's local storage for this site, or by contacting the Owner.</p>
+        </Section>
+
+        <Section title="Your rights under the GDPR">
+          <p>Users may exercise certain rights regarding their Data processed by the Owner. In particular, Users have the right to:</p>
+          <ul style={{ marginTop: 12, paddingLeft: 20 }}>
+            <li><strong>Withdraw their consent</strong> at any time where they have previously given consent.</li>
+            <li><strong>Object to processing</strong> if the processing is carried out on a legal basis other than consent.</li>
+            <li><strong>Access their Data</strong> — learn if Data is being processed, and obtain a copy of the Data undergoing processing.</li>
+            <li><strong>Verify and seek rectification</strong> — verify the accuracy of their Data and ask for it to be updated or corrected.</li>
+            <li><strong>Restrict the processing</strong> of their Data.</li>
+            <li><strong>Have their Personal Data deleted</strong> or otherwise removed.</li>
+            <li><strong>Receive their Data</strong> in a structured, commonly used, machine-readable format (data portability).</li>
+            <li><strong>Lodge a complaint</strong> with their competent data protection authority. For Users in Bavaria, this is the <a href="https://www.lda.bayern.de" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)" }}>Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)</a>.</li>
+          </ul>
+          <Sub title="How to exercise these rights">
+            <p>Any requests can be directed to the Owner via the contact details above. Such requests are free of charge and will be answered as early as possible and always within one month.</p>
+          </Sub>
+        </Section>
+
+        <Section title="Legal basis of processing">
+          <p>The Owner may process Personal Data relating to Users if one of the following applies:</p>
+          <ul style={{ marginTop: 12, paddingLeft: 20 }}>
+            <li>Users have given their <strong>consent</strong> for one or more specific purposes (e.g. analytics tracking via the cookie banner);</li>
+            <li>Provision of Data is necessary for the <strong>performance of an agreement</strong> with the User and/or for any pre-contractual obligations thereof (e.g. responding to a contact-form inquiry);</li>
+            <li>Processing is necessary for compliance with a <strong>legal obligation</strong> to which the Owner is subject;</li>
+            <li>Processing is necessary for the purposes of the <strong>legitimate interests</strong> pursued by the Owner or by a third party (e.g. essential operational logs for security).</li>
+          </ul>
+        </Section>
+
+        <Section title="Additional information">
+          <Sub title="Legal action">
+            <p>The User's Personal Data may be used for legal purposes by the Owner in Court or in the stages leading to possible legal action arising from improper use of this Website or the related Services.</p>
+          </Sub>
+          <Sub title="System logs and maintenance">
+            <p>For operation and maintenance purposes, this Website and any third-party services may collect files that record interaction with this Website (System logs) or use other Personal Data (such as the IP Address) for this purpose.</p>
+          </Sub>
+          <Sub title="Changes to this Privacy Policy">
+            <p>The Owner reserves the right to make changes to this Privacy Policy at any time by notifying its Users on this page. It is strongly recommended to check this page often, referring to the date of the last modification listed at the top. Should the changes affect processing activities performed on the basis of the User's consent, the Owner shall collect new consent from the User, where required.</p>
+          </Sub>
+        </Section>
+
+        <Reveal>
+          <div style={{ marginTop: 60, paddingTop: 24, borderTop: "1px solid var(--line)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "var(--ink-50)", letterSpacing: "0.04em", textTransform: "uppercase", margin: 0 }}>Last updated: 12 May 2026</p>
+            <button className="nav-cta" onClick={() => navigate("home")}><Dot accent /> Back to home</button>
+          </div>
+        </Reveal>
+      </section>
+
+      <Footer navigate={navigate} />
+    </div>);
+
+};
+
+Object.assign(window, { Shops, Contact, Privacy });
 
 /* App shell — router, nav, cursor, theme, tweaks */
 
@@ -2340,7 +2489,8 @@ const ROUTES = [
 { key: "workshops", label: "Workshops", component: "Workshops" },
 { key: "shops", label: "Shops", component: "Shops" },
 { key: "studio", label: "About", component: "Studio" },
-{ key: "contact", label: "Contact", component: "Contact" }];
+{ key: "contact", label: "Contact", component: "Contact" },
+{ key: "privacy", label: "Privacy", component: "Privacy" }];
 
 
 const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
@@ -2486,12 +2636,12 @@ const App = () => {
 </span>
         </a>
         <div className="nav-links">
-          {ROUTES.filter((r) => r.key !== "home" && r.key !== "contact").map((r) => <a
+          {ROUTES.filter((r) => r.key !== "home" && r.key !== "contact" && r.key !== "privacy").map((r) => <a
             key={r.key}
             href={"#/" + r.key}
             className={"nav-link" + (route === r.key ? " is-active" : "")}
             onClick={(e) => {e.preventDefault();navigate(r.key);}}>
-              
+
               {r.label}
             </a>
           )}
